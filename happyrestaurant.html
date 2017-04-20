@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title> Restaurant Bill</title>
+</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+
+<body style="text-align:center;">
+<h1> Happy Restaurant</h1><br><br>
+
+<script type="text/javascript">
+        var app = angular.module('MyApp', [])
+        app.controller('MyController', function ($scope, $window) {
+ 
+                
+            $scope.ShowAlert = function () {
+                if (typeof ($scope.order) == "undefined" || $scope.order== "") {
+                   alert("Please enter your order!");
+                    return;
+                }
+                $window.alert("Your order name " + $scope.order);
+              var a,sat,v,st,tc;
+              var app=[];
+var args1=[];
+		$scope.a= ($scope.c * $scope.q);		
+		$scope.sat=14.5 * $scope.a / 100;	
+		$scope.v=14.5 * $scope.a / 100;		
+		$scope.st=0.5 * $scope.a / 100;		
+		$scope.tc=$scope.a + $scope.sat + $scope.v + $scope.st;		
+                 var array1=[$scope.a,$scope.sat,$scope.v,$scope.st,$scope.tc];
+var args=[$scope.name,$scope.order];
+                 localStorage.setItem("array", array1);
+localStorage.setItem("argsarray",args);
+                  app=localStorage.getItem("array");
+args1=localStorage.getItem("argsarray");
+                  alert(app);
+alert(args1);
+			
+
+console.log(array1);
+               
+
+               
+            }
+		
+
+        });
+    </script>
+<div ng-app="MyApp" ng-controller="MyController">
+  <p>Name of the customer : <input type="text" ng-model="name" id="name"></p>
+  
+  <p>Item ordered  : <input type="text" ng-model="order" id="order"></p>
+  <p>Item Quantity : <input type="number" ng-model="q" id="quantity"></p>
+  <p>Item cost     : <input type="number" ng-model="c" id="cost"></p>
+  <p>cost: {{a}} </p>
+  <P> service tax : {{sat}}</p>
+  <p>vat : {{v}}</p>
+  <p>Swatchbharat tax : {{st}}</p>
+  <p>Total cost :{{tc}}</p>
+  <!--<input type="button" click="myfunction()">-->
+
+<p>Click the button to run a function:</p>
+ <input type="button" value="Show Alert" ng-click="ShowAlert()">
+
+
+
+    
+       </body>
+</html>
